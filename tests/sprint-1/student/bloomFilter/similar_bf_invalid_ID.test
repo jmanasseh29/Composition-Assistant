@@ -1,0 +1,11 @@
+INPUT
+load_bf data/project1/proj1_medium.csv
+similar_bf 5 230
+similar_bf 5 4.3
+similar_bf 5 -5
+OUTPUT
+Read 60 students from data/project1/proj1_medium.csv
+ERROR:
+ERROR:
+ERROR:
+END

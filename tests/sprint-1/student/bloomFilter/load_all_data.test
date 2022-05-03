@@ -1,0 +1,15 @@
+INPUT
+load_bf data/project1/proj1_small.csv
+load_bf data/project1/proj1_medium.csv
+load_bf data/project1/proj1_big.csv
+load_bf data/project1/proj1_small.csv
+load_bf data/project1/proj1_medium.csv
+load_bf data/project1/proj1_big.csv
+OUTPUT
+Read 20 students from data/project1/proj1_small.csv
+Read 60 students from data/project1/proj1_medium.csv
+Read 500 students from data/project1/proj1_big.csv
+Read 20 students from data/project1/proj1_small.csv
+Read 60 students from data/project1/proj1_medium.csv
+Read 500 students from data/project1/proj1_big.csv
+END

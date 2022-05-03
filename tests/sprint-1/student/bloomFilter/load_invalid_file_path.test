@@ -1,0 +1,7 @@
+INPUT
+load_bf 4
+load_bf data/project1/proj1_small
+OUTPUT
+ERROR:
+ERROR:
+END

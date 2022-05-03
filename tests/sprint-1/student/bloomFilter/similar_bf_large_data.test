@@ -1,0 +1,7 @@
+INPUT
+load_bf data/project1/proj1_big.csv
+similar_bf 1 1
+OUTPUT
+Read 500 students from data/project1/proj1_big.csv
+376
+END

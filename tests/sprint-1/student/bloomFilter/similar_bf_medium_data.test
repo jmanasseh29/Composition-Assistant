@@ -1,0 +1,7 @@
+INPUT
+load_bf data/project1/proj1_medium.csv
+similar_bf 1 2
+OUTPUT
+Read 60 students from data/project1/proj1_medium.csv
+49
+END
