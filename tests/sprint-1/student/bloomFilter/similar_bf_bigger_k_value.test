@@ -1,8 +1,0 @@
-INPUT
-load_bf data/project1/proj1_very_small.csv
-similar_bf 10 1
-OUTPUT
-Read 3 students from data/project1/proj1_very_small.csv
-2
-3
-END
