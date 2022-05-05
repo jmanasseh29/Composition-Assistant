@@ -13,10 +13,13 @@ import java.util.Locale;
 
 public class MapGenerator {
 
-    private HashMap<Integer, String> keyIntegerAssignments;
-    private String userKey;
+    private HashMap<String, Integer> keyToInteger;
+    private HashMap<Integer, String> integerToKey;
 
-    public MapGenerator(String[] commandInputs){
+
+    private String userKey = new String();
+
+    public MapGenerator(){
     }
 
     /**
@@ -26,41 +29,58 @@ public class MapGenerator {
      * @return
      */
 
-    public HashMap<Integer, String> generateKeyIntMap(String[] commandInputs){
+    public HashMap<Integer, String> generateIntToKeyMap(String[] commandInputs){
 
-        keyIntegerAssignments = new HashMap<>();
-        commandInputs[2] = userKey;
+        integerToKey = new HashMap<>();
 
-        if (userKey.toLowerCase().equals("c")){
+        System.out.println(commandInputs[2]);
+        userKey = commandInputs[2];
 
-            keyIntegerAssignments.put(1, "c");
-            keyIntegerAssignments.put(2, "d");
-            keyIntegerAssignments.put(3, "e");
-            keyIntegerAssignments.put(4, "f");
-            keyIntegerAssignments.put(5, "g");
-            keyIntegerAssignments.put(6, "a");
-            keyIntegerAssignments.put(7, "b");
+        if (userKey.equals("c")){
 
-        } else if (userKey.toLowerCase().equals("d")){
+            integerToKey.put(1, "c");
+            integerToKey.put(2, "d");
+            integerToKey.put(3, "e");
+            integerToKey.put(4, "f");
+            integerToKey.put(5, "g");
+            integerToKey.put(6, "a");
+            integerToKey.put(7, "b");
+
+        } else if (userKey.equals("d")){
+
+        }
+        return integerToKey;
+    }
 
 
 
+
+    public HashMap<String, Integer> generateKeyToIntMap(String[] commandInputs){
+
+        keyToInteger = new HashMap<>();
+
+        System.out.println(commandInputs[2]);
+        userKey = commandInputs[2];
+
+        if (userKey.equals("c")){
+
+            keyToInteger.put("c", 1);
+            keyToInteger.put("d", 2);
+            keyToInteger.put("e", 3);
+            keyToInteger.put("f", 4);
+            keyToInteger.put("g", 5);
+            keyToInteger.put("a", 6);
+            keyToInteger.put("b", 7);
+
+            System.out.println("map " + keyToInteger);
+
+        } else if (userKey.equals("d")){
 
         }
 
-
-
-
-
-
-
-
-
-
-        return keyIntegerAssignments;
+        return keyToInteger;
 
     }
-
 
 
 
