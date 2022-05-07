@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <title>Table</title>
+    <style>
+        .headerWrapper {
+            width: 100%;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .chordWrapper {
+            width: 100%;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .genreKeyWrapper {
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .logoBG {
+            border-radius: 68px;
+            background: #F2E4FF;
+            border: 3px solid #fff;
+            padding: 95px 18px 10px;
+            filter: drop-shadow(7px 6px 8px #AFAFAF);
+        }
+
+        .headerTextWrapper {
+            margin-top: 40px;
+        }
+
+        .headerStyle_1 {
+            font-family: Gogh,serif;
+            font-size: 70px;
+            color: black;
+            line-height: 50px;
+        }
+
+        .headerStyle_2 {
+            font-family: Gogh,serif;
+            font-size: 70px;
+            color: #8000FF;
+            line-height: 50px;
+        }
+
+        .subHeaderStyle {
+            margin-top: 15px;
+            font-family: Gogh,serif;
+            font-size: 20px;
+            line-height:20px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .chordDropDownStyle {
+            background: #8000FF;
+            padding: 7px 2px 7px 3px;
+            border-radius: 25px;
+            font-family: Gogh,serif;
+            font-size: 20px;
+            color: white;
+            border: 0;
+            width: 200px;
+        }
+
+        .simpleLabel {
+            font-family: Gogh,serif;
+            font-size: 15px;
+        }
+
+        .chordDropDownLabel {
+            font-family: Gogh,serif;
+            font-size: 15px;
+            margin-left: 35px;
+        }
+
+        .genreKeyDropDownLabel {
+            font-family: Gogh,serif;
+            font-size: 20px;
+            line-height:0;
+            text-align: center;
+            width: 150px;
+            margin-left: 60px;
+        }
+
+        .genreKeyDropDownStyle {
+            background: white;
+            padding: 10px 5px 10px 6px;
+            border-radius: 25px;
+            text-align: center;
+            font-family: Gogh,serif;
+            font-size: 20px;
+            color: black;
+            border: 0;
+            width: 150px;
+            filter: drop-shadow(7px 6px 8px #AFAFAF);
+        }
+
+        .buttonStyle {
+            background: #F2E4FF;
+            margin-top: 35px;
+            border: 3px solid #fff;
+            width: 200px;
+            border-radius: 30px;
+            margin-left: 60px;
+            padding: 10px;
+            filter: drop-shadow(7px 6px 8px #AFAFAF);
+            font-family: Gogh,serif;
+            font-size: 20px;
+            color: white;
+        }
+
+        #redButton {
+            background: #FF0049;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 0;
+        }
+
+        #orangeButton {
+            background: #FCC400;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 0;
+        }
+
+        #greenButton {
+            background: #00F090;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 0;
+        }
+
+        #blueButton {
+            background: #00C3FF;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 0;
+        }
+
+        #purpleButton {
+            background: #8000FF;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 0;
+        }
+
+        @font-face {
+            font-family: "Gogh";
+            src: url("Gogh-ExtraBold.otf")
+        }
+
+    </style>
+</head>
+
+<body>
+
+<span class="simpleLabel">Select color scheme</span>
+<button id="redButton"></button>
+<button id="orangeButton"></button>
+<button id="greenButton"></button>
+<button id="blueButton"></button>
+<button id="purpleButton"></button>
+
+<div class="headerWrapper">
+    <div id="logo">
+        <span class="logoBG">
+            <img width="90" src="LogoPurple.png"/>
+        </span>
+    </div>
+    <div class="headerTextWrapper">
+        <span class="headerStyle_1"> Composition </span>
+        <div id="assistant">
+            <span class="headerStyle_2"> Assistant </span> <!-- MAIN COLOR -->
+        </div>
+    </div>
+
+    <div class="subHeaderStyle">Enter at least two chords and a genre to receive composition recommendations</div>
+</div>
+
+<div id="chords" class="chordWrapper">
+
+    <!-- Create a dropdown here to choose between tables -->
+    <label class="chordDropDownLabel" for="dropdown1">Chord 1</label>
+    <select class="chordDropDownStyle" id="dropdown1" name="dropdown"> <!-- MAIN COLOR -->
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+    </select>
+
+    <label class="chordDropDownLabel" for="dropdown2">Chord 2</label>
+    <select class="chordDropDownStyle" id="dropdown2" name="dropdown"> <!-- MAIN COLOR -->
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+    </select>
+
+    <label class="chordDropDownLabel" for="dropdown3">Chord 3</label>
+    <select class="chordDropDownStyle" id="dropdown3" name="dropdown"> <!-- MAIN COLOR -->
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+    </select>
+
+    <label class="chordDropDownLabel" for="dropdown4">Chord 4</label>
+    <select class="chordDropDownStyle" id="dropdown4" name="dropdown"> <!-- MAIN COLOR -->
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+    </select>
+
+</div>
+
+<br>
+
+<div class="genreKeyWrapper">
+
+    <label class="genreKeyDropDownLabel" for="genre">Genre</label>
+    <select class="genreKeyDropDownStyle" id="genre" name="genre">
+        <option value="Genre 1">Genre 1</option>
+        <option value="Genre 2">Genre 2</option>
+    </select>
+
+    <label class="genreKeyDropDownLabel" for="key">Key</label>
+    <select class="genreKeyDropDownStyle" id="key" name="dropdown">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+    </select>
+
+    <div id ="enter">
+        <button class="buttonStyle" id="enterButton">Enter</button>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="./main.js"></script>
+</html>
