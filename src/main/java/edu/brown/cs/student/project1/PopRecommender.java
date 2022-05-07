@@ -48,8 +48,8 @@ public class PopRecommender implements Recommender{
 
         this._generatedMap = new HashMap<>();
 
-    System.out.println("genre: " +commandInputs[1] + "  key: "+ commandInputs[2] + "  chord 1: "+ commandInputs[3] + "  chord 2: "+  commandInputs[4] + "  chord 3: "+  commandInputs[5] + "  chord 4: "+  commandInputs[6]);
-    System.out.println("Generating Recommendations ...");
+    //System.out.println("genre: " +commandInputs[1] + "  key: "+ commandInputs[2] + "  chord 1: "+ commandInputs[3] + "  chord 2: "+  commandInputs[4] + "  chord 3: "+  commandInputs[5] + "  chord 4: "+  commandInputs[6]);
+
 
         this._mapGenerator = new MapGenerator();
         this._generatedMap = this._mapGenerator.generateKeyToIntMap(commandInputs);
@@ -83,17 +83,17 @@ public class PopRecommender implements Recommender{
         this._matchList.add(this._fourthChordInt);
         }
 
-    System.out.println("match list: " + this._matchList);
+    //System.out.println("match list: " + this._matchList);
 
 
-    for (int i = 0; i < this._chordProgression1.length ; i++){
-        for (int j = 0; j < this._matchList.size(); j++){
+        for (int i = 0; i < this._chordProgression1.length ; i++){
+            for (int j = 0; j < this._matchList.size(); j++){
             if (this._matchList.get(j).equals(this._chordProgression1[i])){
                 this._chordProg1SimilarityIndex = this._chordProg1SimilarityIndex + 1; //increment similarity checker by 1 for ever common chord between the
                                                                              // set chord progressions and the user's desired chords.
+                }
             }
         }
-    }
 
         for (int i = 0; i < this._chordProgression2.length ; i++){
             for (int j = 0; j < this._matchList.size(); j++){
@@ -113,12 +113,72 @@ public class PopRecommender implements Recommender{
             }
         }
 
+      //compare three similarity indices so that we can choose which one to base predictions from.  If multiple
+      // chord progressions have equal similarity indices are then added into a list and the tie is broken using randomization
+
+      //while loop to ensure incrementing doesn't result in repeated equivalence (for example in case that similarity indices are 2, 2, 3)
+      //this.chordSimilarityIndexRandomChoice(this._chordProg1SimilarityIndex, this._chordProg2SimilarityIndex, this._chordProg3SimilarityIndex);
+
+        if (this._chordProg1SimilarityIndex == this._chordProg2SimilarityIndex){
+            this._chordProg1SimilarityIndex++ ;
+        }
+        if (this._chordProg1SimilarityIndex == this._chordProg3SimilarityIndex){
+            this._chordProg3SimilarityIndex++;
+        }
+        if ( this._chordProg2SimilarityIndex == this._chordProg3SimilarityIndex){
+            this._chordProg2SimilarityIndex++;
+        }
 
         System.out.println(" chord 1 similar: " + this._chordProg1SimilarityIndex);
         System.out.println(" chord 2 similar: " + this._chordProg2SimilarityIndex);
         System.out.println(" chord 3 similar: " + this._chordProg3SimilarityIndex);
 
 
+        if (this._chordProg2SimilarityIndex > this._chordProg1SimilarityIndex){
+
+            if (this._chordProg2SimilarityIndex > this._chordProg3SimilarityIndex){
+                secondChordProgRecommender();
+            }
+
+            if (this._chordProg2SimilarityIndex < this._chordProg3SimilarityIndex ){
+                thirdChordProgRecommender();
+            }
+        }
+
+        if (this._chordProg2SimilarityIndex < this._chordProg1SimilarityIndex){
+
+
+            if (this._chordProg1SimilarityIndex > this._chordProg3SimilarityIndex){
+                firstChordProgRecommender();
+            }
+
+            if (this._chordProg1SimilarityIndex < this._chordProg3SimilarityIndex ){
+                thirdChordProgRecommender();
+            }
+
+        }
+
     }
+
+
+    public void firstChordProgRecommender(){
+
+        System.out.println("Recommending based on Chord Progression 1");
+
+    }
+
+    public void secondChordProgRecommender(){
+
+        System.out.println("Recommending based on Chord Progression 2");
+
+    }
+
+    public void thirdChordProgRecommender(){
+
+        System.out.println("Recommending based on Chord Progression 3");
+
+    }
+
+
 
 }
