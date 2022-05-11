@@ -123,77 +123,69 @@ public class PopRecommender implements Recommender{
 
         while (_chordProg1SimilarityIndex == _chordProg3SimilarityIndex){
             _chordProg3SimilarityIndex = _chordProg3SimilarityIndex + (int)(Math.random()*7);
-            System.out.println("adding 3");
+
 
         }
 
         while (_chordProg1SimilarityIndex == _chordProg2SimilarityIndex || _chordProg2SimilarityIndex == _chordProg3SimilarityIndex){
             _chordProg1SimilarityIndex = _chordProg1SimilarityIndex + (int)(Math.random()*7) ;
             _chordProg2SimilarityIndex = _chordProg2SimilarityIndex + (int)(Math.random()*7);
-            System.out.println("adding 1");
-            System.out.println("adding 2");
+
 
         }
 
-
-
-
-        System.out.println(" chord 1 similar: " + _chordProg1SimilarityIndex);
-        System.out.println(" chord 2 similar: " + _chordProg2SimilarityIndex);
-        System.out.println(" chord 3 similar: " + _chordProg3SimilarityIndex);
+        //System.out.println(" chord 1 similar: " + _chordProg1SimilarityIndex);
+        //System.out.println(" chord 2 similar: " + _chordProg2SimilarityIndex);
+        //System.out.println(" chord 3 similar: " + _chordProg3SimilarityIndex);
 
 
         if (_chordProg2SimilarityIndex > _chordProg1SimilarityIndex){
 
-            if (_chordProg2SimilarityIndex > _chordProg3SimilarityIndex){
-
-                firstChordProgRecommender();
-                //secondChordProgRecommender();
-            }
-
-            if (_chordProg2SimilarityIndex < _chordProg3SimilarityIndex ){
-
-                firstChordProgRecommender();
-                // thirdChordProgRecommender();
-            }
+            if (_chordProg2SimilarityIndex > _chordProg3SimilarityIndex){this.chordProgRecommender("second"); }
+            if (_chordProg2SimilarityIndex < _chordProg3SimilarityIndex ){ this.chordProgRecommender("third"); }
         }
-
 
         if (_chordProg2SimilarityIndex < _chordProg1SimilarityIndex){
 
-            if (_chordProg1SimilarityIndex > _chordProg3SimilarityIndex){
-                this.firstChordProgRecommender();
-            }
-
-            if (_chordProg1SimilarityIndex < _chordProg3SimilarityIndex ){
-                this.thirdChordProgRecommender();
-            }
+            if (_chordProg1SimilarityIndex > _chordProg3SimilarityIndex){ this.chordProgRecommender("first"); }
+            if (_chordProg1SimilarityIndex < _chordProg3SimilarityIndex ){this.chordProgRecommender("third"); }
 
         }
-
     }
 
 
     //Integer[] _chordProgression1 = {1, 4, 5, 4};
-    public String firstChordProgRecommender(){
+    public String chordProgRecommender(String whichOne){
+
+        Integer[] whichArray = null;
+
+        if (whichOne.equals("first")){
+            whichArray = this._chordProgression1;
+            System.out.println("Recommending based on Chord Progression 1");
+        }else if (whichOne.equals("second")){
+            whichArray = this._chordProgression2;
+            System.out.println("Recommending based on Chord Progression 2");
+        } else if(whichOne.equals("third")){
+            whichArray = this._chordProgression3;
+            System.out.println("Recommending based on Chord Progression 3");
+        }
+
 
         double _barCounter;
         String _noteRhythm;
         String _note;
         String _longOutputNoteString = "";
 
-        System.out.println("Recommending based on Chord Progression 1");
 
         _barCounter = 0;
 
         while (_barCounter < 8){
 
-            for (int i = 0; i < _chordProgression1.length ; i ++){
+            for (int i = 0; i < whichArray.length ; i ++){
 
                 _noteRhythm = generateRhythm();
 
-                _note = _intToString.get(_chordProgression1[i]);
-
+                _note = _intToString.get(whichArray[i]);
 
 
                // System.out.println(_note + _noteRhythm);
@@ -204,8 +196,6 @@ public class PopRecommender implements Recommender{
                 } else{
                     _longOutputNoteString = _longOutputNoteString  +", " + _note + "5" + "/" + _noteRhythm;
                 }
-
-
 
                 //keeps track of whether enough/too many notes have been generated
                 if (_noteRhythm.equals("q")) {
@@ -225,23 +215,6 @@ public class PopRecommender implements Recommender{
         return _longOutputNoteString;
 
     }
-
-
-
-
-    //Integer[] _chordProgression2 = {1, 5, 6, 4};
-    public void secondChordProgRecommender(){
-        System.out.println("Recommending based on Chord Progression 2");
-    }
-
-
-    //Integer[] _chordProgression3 = {1, 6, 4, 5};
-    public void thirdChordProgRecommender(){
-        System.out.println("Recommending based on Chord Progression 3");
-    }
-
-
-
 
 
     String rhythm;
