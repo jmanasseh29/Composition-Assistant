@@ -195,9 +195,17 @@ public class PopRecommender implements Recommender{
                 _note = _intToString.get(_chordProgression1[i]);
 
 
-                _note.concat(_noteRhythm);
+
                // System.out.println(_note + _noteRhythm);
-                _longOutputNoteString = _longOutputNoteString + _note.concat(_noteRhythm);
+
+                if (_longOutputNoteString.equals("")){
+                    _longOutputNoteString = _longOutputNoteString  + _note + "5" + "/" + _noteRhythm;
+
+                } else{
+                    _longOutputNoteString = _longOutputNoteString  +", " + _note + "5" + "/" + _noteRhythm;
+                }
+
+
 
                 //keeps track of whether enough/too many notes have been generated
                 if (_noteRhythm.equals("q")) {
@@ -255,11 +263,11 @@ public class PopRecommender implements Recommender{
 
             //whole note
             case 2 :
-                rhythm = "w";
+                rhythm = "q";
                 break;
 
             default:
-                rhythm = "q";
+                rhythm = "w";
                 break;
         }
 
