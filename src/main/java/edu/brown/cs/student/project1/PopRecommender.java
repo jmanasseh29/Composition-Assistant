@@ -6,6 +6,10 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ *
+ */
+
 public class PopRecommender implements Recommender{
 
    MapGenerator _mapGenerator;
@@ -86,7 +90,6 @@ public class PopRecommender implements Recommender{
 
     //System.out.println("match list: " + this._matchList);
 
-
         for (int i = 0; i < this._chordProgression1.length ; i++){
             for (int j = 0; j < this._matchList.size(); j++){
             if (this._matchList.get(j).equals(this._chordProgression1[i])){
@@ -124,13 +127,11 @@ public class PopRecommender implements Recommender{
         while (_chordProg1SimilarityIndex == _chordProg3SimilarityIndex){
             _chordProg3SimilarityIndex = _chordProg3SimilarityIndex + (int)(Math.random()*7);
 
-
         }
 
         while (_chordProg1SimilarityIndex == _chordProg2SimilarityIndex || _chordProg2SimilarityIndex == _chordProg3SimilarityIndex){
             _chordProg1SimilarityIndex = _chordProg1SimilarityIndex + (int)(Math.random()*7) ;
             _chordProg2SimilarityIndex = _chordProg2SimilarityIndex + (int)(Math.random()*7);
-
 
         }
 
@@ -153,6 +154,41 @@ public class PopRecommender implements Recommender{
         }
     }
 
+    /**
+     *
+     * @return
+     */
+
+    public String generateRhythm() {
+
+        String rhythm;
+
+        int rand_int = (int) (Math.random() * 3);
+
+        switch (rand_int) {
+
+            //eighth note
+            case 0 :
+                rhythm = "8" ;
+                break;
+
+            //sixteenth note
+            case 1 :
+                rhythm = "h" ;
+                break;
+
+            //whole note
+            case 2 :
+                rhythm = "q";
+                break;
+
+            default:
+                rhythm = "w";
+                break;
+        }
+        return rhythm;
+    }
+
 
     //Integer[] _chordProgression1 = {1, 4, 5, 4};
     public String chordProgRecommender(String whichOne){
@@ -170,7 +206,6 @@ public class PopRecommender implements Recommender{
             System.out.println("Recommending based on Chord Progression 3");
         }
 
-
         double _barCounter;
         String _noteRhythm;
         String _note;
@@ -179,7 +214,7 @@ public class PopRecommender implements Recommender{
 
         _barCounter = 0;
 
-        while (_barCounter < 8){
+        while (_barCounter < 16){
 
             for (int i = 0; i < whichArray.length ; i ++){
 
@@ -215,45 +250,5 @@ public class PopRecommender implements Recommender{
         return _longOutputNoteString;
 
     }
-
-
-    String rhythm;
-    public String generateRhythm() {
-
-        int rand_int = (int) (Math.random() * 3);
-
-        switch (rand_int) {
-
-            //eighth note
-            case 0 :
-                rhythm = "8" ;
-                break;
-
-            //sixteenth note
-            case 1 :
-                rhythm = "h" ;
-                break;
-
-            //whole note
-            case 2 :
-                rhythm = "q";
-                break;
-
-            default:
-                rhythm = "w";
-                break;
-        }
-
-    return rhythm;
-
-    }
-
-
-
-
-
-
-
-
 
 }

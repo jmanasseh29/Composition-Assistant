@@ -16,9 +16,6 @@ public class MapGenerator {
     private HashMap<String, Integer> keyToInteger;
 
 
-
-
-
     public MapGenerator(){
     }
 
@@ -33,8 +30,6 @@ public class MapGenerator {
 
         HashMap<Integer, String> integerToKey = new HashMap<>();
         String userKey;
-
-
         System.out.println(commandInputs[2]);
         userKey = commandInputs[2].toUpperCase();
 
@@ -196,11 +191,5 @@ public class MapGenerator {
         return keyToInteger;
 
     }
-
-
-
-
-
-
 
 }

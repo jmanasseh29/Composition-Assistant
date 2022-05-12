@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MapGenerator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sprint-1</a> &gt; <a href="index.source.html" class="el_package">edu.brown.cs.student.project1</a> &gt; <span class="el_source">MapGenerator.java</span></div><h1>MapGenerator.java</h1><pre class="source lang-java linenums">package edu.brown.cs.student.project1;
+
+
+import java.util.HashMap;
+import java.util.Locale;
+
+/**
+ * This class will take in the key inputted by the user through either the REPL or the frontend and then generate a hashmap where the key
+ * is the name of a note and the value is its assigned numerical value.  For example, if the user selects the key or c major, the c chord will be
+ * assigned a value of 1, d will have a value of 2 and so on.
+ */
+
+
+public class MapGenerator {
+
+    private HashMap&lt;String, Integer&gt; keyToInteger;
+
+
+<span class="fc" id="L19">    public MapGenerator(){</span>
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * This method takes in the User Inputs and fills in a hashmap assigning values to every note in a scale dependent on which
+     * key the user desires.
+     * @param commandInputs
+     * @return
+     */
+
+    public HashMap&lt;Integer, String&gt; generateIntToKeyMap(String[] commandInputs){
+
+<span class="fc" id="L31">        HashMap&lt;Integer, String&gt; integerToKey = new HashMap&lt;&gt;();</span>
+        String userKey;
+<span class="fc" id="L33">        System.out.println(commandInputs[2]);</span>
+<span class="fc" id="L34">        userKey = commandInputs[2].toUpperCase();</span>
+
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if (userKey.equals(&quot;C&quot;)){</span>
+
+<span class="nc" id="L38">            integerToKey.put(1, &quot;C&quot;);</span>
+<span class="nc" id="L39">            integerToKey.put(2, &quot;D&quot;);</span>
+<span class="nc" id="L40">            integerToKey.put(3, &quot;E&quot;);</span>
+<span class="nc" id="L41">            integerToKey.put(4, &quot;F&quot;);</span>
+<span class="nc" id="L42">            integerToKey.put(5, &quot;G&quot;);</span>
+<span class="nc" id="L43">            integerToKey.put(6, &quot;A&quot;);</span>
+<span class="nc" id="L44">            integerToKey.put(7, &quot;B&quot;);</span>
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        } else if (userKey.equals(&quot;D&quot;)){</span>
+
+<span class="fc" id="L48">            integerToKey.put(1, &quot;D&quot;);</span>
+<span class="fc" id="L49">            integerToKey.put(2, &quot;E&quot;);</span>
+<span class="fc" id="L50">            integerToKey.put(3, &quot;F#&quot;);</span>
+<span class="fc" id="L51">            integerToKey.put(4, &quot;G&quot;);</span>
+<span class="fc" id="L52">            integerToKey.put(5, &quot;A&quot;);</span>
+<span class="fc" id="L53">            integerToKey.put(6, &quot;B&quot;);</span>
+<span class="fc" id="L54">            integerToKey.put(7, &quot;C#&quot;);</span>
+
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        }else if (userKey.equals(&quot;E&quot;)){</span>
+
+<span class="fc" id="L58">            integerToKey.put(1, &quot;E&quot;);</span>
+<span class="fc" id="L59">            integerToKey.put(2, &quot;F#&quot;);</span>
+<span class="fc" id="L60">            integerToKey.put(3, &quot;G#&quot;);</span>
+<span class="fc" id="L61">            integerToKey.put(4, &quot;A&quot;);</span>
+<span class="fc" id="L62">            integerToKey.put(5, &quot;B&quot;);</span>
+<span class="fc" id="L63">            integerToKey.put(6, &quot;C#&quot;);</span>
+<span class="fc" id="L64">            integerToKey.put(7, &quot;D#&quot;);</span>
+
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        }else if (userKey.equals(&quot;F&quot;)){</span>
+
+<span class="nc" id="L69">            integerToKey.put(1, &quot;F&quot;);</span>
+<span class="nc" id="L70">            integerToKey.put(2, &quot;G&quot;);</span>
+<span class="nc" id="L71">            integerToKey.put(3, &quot;A&quot;);</span>
+<span class="nc" id="L72">            integerToKey.put(4, &quot;Bb&quot;);</span>
+<span class="nc" id="L73">            integerToKey.put(5, &quot;C&quot;);</span>
+<span class="nc" id="L74">            integerToKey.put(6, &quot;D&quot;);</span>
+<span class="nc" id="L75">            integerToKey.put(7, &quot;E&quot;);</span>
+
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        }else if (userKey.equals(&quot;G&quot;)){</span>
+
+<span class="nc" id="L79">            integerToKey.put(1, &quot;G&quot;);</span>
+<span class="nc" id="L80">            integerToKey.put(2, &quot;A&quot;);</span>
+<span class="nc" id="L81">            integerToKey.put(3, &quot;B&quot;);</span>
+<span class="nc" id="L82">            integerToKey.put(4, &quot;C&quot;);</span>
+<span class="nc" id="L83">            integerToKey.put(5, &quot;D&quot;);</span>
+<span class="nc" id="L84">            integerToKey.put(6, &quot;E&quot;);</span>
+<span class="nc" id="L85">            integerToKey.put(7, &quot;F#&quot;);</span>
+
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        }else if (userKey.equals(&quot;A&quot;)){</span>
+
+<span class="nc" id="L89">            integerToKey.put(1, &quot;A&quot;);</span>
+<span class="nc" id="L90">            integerToKey.put(2, &quot;B&quot;);</span>
+<span class="nc" id="L91">            integerToKey.put(3, &quot;C#&quot;);</span>
+<span class="nc" id="L92">            integerToKey.put(4, &quot;D&quot;);</span>
+<span class="nc" id="L93">            integerToKey.put(5, &quot;E&quot;);</span>
+<span class="nc" id="L94">            integerToKey.put(6, &quot;F#&quot;);</span>
+<span class="nc" id="L95">            integerToKey.put(7, &quot;G#&quot;);</span>
+
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        }else if (userKey.equals(&quot;B&quot;)){</span>
+
+<span class="nc" id="L99">            integerToKey.put(1, &quot;B&quot;);</span>
+<span class="nc" id="L100">            integerToKey.put(2, &quot;C#&quot;);</span>
+<span class="nc" id="L101">            integerToKey.put(3, &quot;D#&quot;);</span>
+<span class="nc" id="L102">            integerToKey.put(4, &quot;E&quot;);</span>
+<span class="nc" id="L103">            integerToKey.put(5, &quot;F#&quot;);</span>
+<span class="nc" id="L104">            integerToKey.put(6, &quot;G#&quot;);</span>
+<span class="nc" id="L105">            integerToKey.put(7, &quot;A#&quot;);</span>
+
+        }
+<span class="fc" id="L108">        return integerToKey;</span>
+    }
+
+    public HashMap&lt;String, Integer&gt; generateKeyToIntMap(String[] commandInputs){
+
+<span class="nc" id="L113">        HashMap&lt;String, Integer&gt; keyToInteger = new HashMap&lt;&gt;();</span>
+        String userKey;
+
+<span class="nc" id="L116">        userKey = commandInputs[2].toUpperCase();</span>
+
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        if (userKey.equals(&quot;C&quot;)){</span>
+
+<span class="nc" id="L120">            keyToInteger.put(&quot;C&quot;, 1);</span>
+<span class="nc" id="L121">            keyToInteger.put(&quot;D&quot;, 2);</span>
+<span class="nc" id="L122">            keyToInteger.put(&quot;E&quot;, 3);</span>
+<span class="nc" id="L123">            keyToInteger.put(&quot;F&quot;, 4);</span>
+<span class="nc" id="L124">            keyToInteger.put(&quot;G&quot;, 5);</span>
+<span class="nc" id="L125">            keyToInteger.put(&quot;A&quot;, 6);</span>
+<span class="nc" id="L126">            keyToInteger.put(&quot;B&quot;, 7);</span>
+
+<span class="nc" id="L128">            System.out.println(&quot;map &quot; + keyToInteger);</span>
+
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        }else if (userKey.equals(&quot;D&quot;)){</span>
+
+<span class="nc" id="L132">            keyToInteger.put(&quot;D&quot;, 1);</span>
+<span class="nc" id="L133">            keyToInteger.put(&quot;E&quot;, 2);</span>
+<span class="nc" id="L134">            keyToInteger.put(&quot;F#&quot;,3);</span>
+<span class="nc" id="L135">            keyToInteger.put(&quot;G&quot;, 4);</span>
+<span class="nc" id="L136">            keyToInteger.put(&quot;A&quot;, 5);</span>
+<span class="nc" id="L137">            keyToInteger.put(&quot;B&quot;, 6);</span>
+<span class="nc" id="L138">            keyToInteger.put(&quot;C#&quot;,7);</span>
+
+<span class="nc bnc" id="L140" title="All 2 branches missed.">        }else if (userKey.equals(&quot;E&quot;)){</span>
+
+<span class="nc" id="L142">            keyToInteger.put(&quot;E&quot;, 1);</span>
+<span class="nc" id="L143">            keyToInteger.put(&quot;F#&quot;, 2);</span>
+<span class="nc" id="L144">            keyToInteger.put(&quot;G#&quot;, 3);</span>
+<span class="nc" id="L145">            keyToInteger.put(&quot;A&quot;, 4);</span>
+<span class="nc" id="L146">            keyToInteger.put(&quot;B&quot;, 5);</span>
+<span class="nc" id="L147">            keyToInteger.put(&quot;C#&quot;, 6);</span>
+<span class="nc" id="L148">            keyToInteger.put(&quot;D#&quot;, 7);</span>
+
+<span class="nc bnc" id="L150" title="All 2 branches missed.">        }else if (userKey.equals(&quot;F&quot;)){</span>
+
+<span class="nc" id="L152">            keyToInteger.put(&quot;F&quot;, 1);</span>
+<span class="nc" id="L153">            keyToInteger.put(&quot;G&quot;, 2);</span>
+<span class="nc" id="L154">            keyToInteger.put(&quot;A&quot;, 3);</span>
+<span class="nc" id="L155">            keyToInteger.put(&quot;Bb&quot;, 4);</span>
+<span class="nc" id="L156">            keyToInteger.put(&quot;C&quot;, 5);</span>
+<span class="nc" id="L157">            keyToInteger.put(&quot;D&quot;, 6);</span>
+<span class="nc" id="L158">            keyToInteger.put(&quot;E&quot;, 7);</span>
+
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        }else if (userKey.equals(&quot;G&quot;)){</span>
+
+<span class="nc" id="L162">            keyToInteger.put(&quot;G&quot;, 1);</span>
+<span class="nc" id="L163">            keyToInteger.put(&quot;A&quot;, 2);</span>
+<span class="nc" id="L164">            keyToInteger.put(&quot;B&quot;, 3);</span>
+<span class="nc" id="L165">            keyToInteger.put(&quot;C&quot;, 4);</span>
+<span class="nc" id="L166">            keyToInteger.put(&quot;D&quot;, 5);</span>
+<span class="nc" id="L167">            keyToInteger.put(&quot;E&quot;, 6);</span>
+<span class="nc" id="L168">            keyToInteger.put(&quot;F#&quot;, 7);</span>
+
+<span class="nc bnc" id="L170" title="All 2 branches missed.">        }else if (userKey.equals(&quot;A&quot;)){</span>
+
+<span class="nc" id="L172">            keyToInteger.put(&quot;A&quot;, 1);</span>
+<span class="nc" id="L173">            keyToInteger.put(&quot;B&quot;, 2);</span>
+<span class="nc" id="L174">            keyToInteger.put(&quot;C#&quot;, 3);</span>
+<span class="nc" id="L175">            keyToInteger.put(&quot;D&quot;, 4);</span>
+<span class="nc" id="L176">            keyToInteger.put(&quot;E&quot;, 5);</span>
+<span class="nc" id="L177">            keyToInteger.put(&quot;F#&quot;, 6);</span>
+<span class="nc" id="L178">            keyToInteger.put(&quot;G#&quot;, 7);</span>
+
+<span class="nc bnc" id="L180" title="All 2 branches missed.">        }else if (userKey.equals(&quot;B&quot;)){</span>
+
+<span class="nc" id="L182">            keyToInteger.put(&quot;B&quot;, 1);</span>
+<span class="nc" id="L183">            keyToInteger.put(&quot;C#&quot;, 2);</span>
+<span class="nc" id="L184">            keyToInteger.put(&quot;D#&quot;, 3);</span>
+<span class="nc" id="L185">            keyToInteger.put(&quot;E&quot;, 4);</span>
+<span class="nc" id="L186">            keyToInteger.put(&quot;F#&quot;, 5);</span>
+<span class="nc" id="L187">            keyToInteger.put(&quot;G#&quot;, 6);</span>
+<span class="nc" id="L188">            keyToInteger.put(&quot;A#&quot;, 7);</span>
+
+        }
+<span class="nc" id="L191">        return keyToInteger;</span>
+
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
