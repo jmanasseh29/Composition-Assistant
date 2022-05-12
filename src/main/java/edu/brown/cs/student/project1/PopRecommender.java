@@ -69,7 +69,10 @@ public class PopRecommender implements Recommender{
 
     _matchList = new ArrayList<>();
 
+    System.out.println("first chord" + this._firstChord);
+
     this._firstChordInt = this._generatedMap.get(this._firstChord);
+
     this._secondChordInt = this._generatedMap.get(this._secondChord);
     this._thirdChordInt = this._generatedMap.get(this._thirdChord);
     this._fourthChordInt = this._generatedMap.get(this._fourthChord);
@@ -201,13 +204,13 @@ public class PopRecommender implements Recommender{
 
         if (whichOne.equals("first")){
             whichArray = this._chordProgression1;
-            System.out.println("Recommending based on Chord Progression 1");
+            //System.out.println("Recommending based on Chord Progression 1");
         }else if (whichOne.equals("second")){
             whichArray = this._chordProgression2;
-            System.out.println("Recommending based on Chord Progression 2");
+            //System.out.println("Recommending based on Chord Progression 2");
         } else if(whichOne.equals("third")){
             whichArray = this._chordProgression3;
-            System.out.println("Recommending based on Chord Progression 3");
+            //System.out.println("Recommending based on Chord Progression 3");
         }
 
         double _barCounter;

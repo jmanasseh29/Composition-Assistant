@@ -44,34 +44,33 @@ public class MapGenerator {
 
         } else if (userKey.equals("D")){
 
-            integerToKey.put(1, "D");
-            integerToKey.put(2, "E");
-            integerToKey.put(3, "F#");
-            integerToKey.put(4, "G");
-            integerToKey.put(5, "A");
-            integerToKey.put(6, "B");
-            integerToKey.put(7, "C#");
+            integerToKey.put(1, "Dmaj7");
+            integerToKey.put(2, "Emin7");
+            integerToKey.put(3, "F#min7");
+            integerToKey.put(4, "Gmaj7");
+            integerToKey.put(5, "A7");
+            integerToKey.put(6, "Bmin7");
+            integerToKey.put(7, "C#min7b5");
 
         }else if (userKey.equals("E")){
 
-            integerToKey.put(1, "E");
-            integerToKey.put(2, "F#");
+            integerToKey.put(1, "Emaj7");
+            integerToKey.put(2, "F#min7");
             integerToKey.put(3, "G#");
-            integerToKey.put(4, "A");
-            integerToKey.put(5, "B");
-            integerToKey.put(6, "C#");
-            integerToKey.put(7, "D#");
-
+            integerToKey.put(4, "Amaj7");
+            integerToKey.put(5, "B7");
+            integerToKey.put(6, "C#min7");
+            integerToKey.put(7, "D#min7b5");
 
         }else if (userKey.equals("F")){
 
-            integerToKey.put(1, "F");
-            integerToKey.put(2, "G");
-            integerToKey.put(3, "A");
-            integerToKey.put(4, "Bb");
-            integerToKey.put(5, "C");
-            integerToKey.put(6, "D");
-            integerToKey.put(7, "E");
+            integerToKey.put(1, "Fmaj7");
+            integerToKey.put(2, "Gmin7");
+            integerToKey.put(3, "Amin7");
+            integerToKey.put(4, "Bbmaj7");
+            integerToKey.put(5, "C7");
+            integerToKey.put(6, "Dmin7");
+            integerToKey.put(7, "Emin7b5");
 
         }else if (userKey.equals("G")){
 
@@ -111,7 +110,6 @@ public class MapGenerator {
 
         HashMap<String, Integer> keyToInteger = new HashMap<>();
         String userKey;
-
         userKey = key.toUpperCase();
 
         if (userKey.equals("C")){
@@ -124,27 +122,26 @@ public class MapGenerator {
             keyToInteger.put("Amin7", 6);
             keyToInteger.put("Bmin7b5", 7);
 
-            System.out.println("map " + keyToInteger);
 
         }else if (userKey.equals("D")){
 
-            keyToInteger.put("D", 1);
-            keyToInteger.put("E", 2);
-            keyToInteger.put("F#",3);
-            keyToInteger.put("G", 4);
-            keyToInteger.put("A", 5);
-            keyToInteger.put("B", 6);
-            keyToInteger.put("C#",7);
+            keyToInteger.put("Dmaj7", 1);
+            keyToInteger.put("Emin7", 2);
+            keyToInteger.put("F#min7",3);
+            keyToInteger.put("Gmaj7", 4);
+            keyToInteger.put("A7", 5);
+            keyToInteger.put("Bmin7", 6);
+            keyToInteger.put("C#min7b5",7);
 
         }else if (userKey.equals("E")){
 
-            keyToInteger.put("E", 1);
-            keyToInteger.put("F#", 2);
-            keyToInteger.put("G#", 3);
-            keyToInteger.put("A", 4);
-            keyToInteger.put("B", 5);
-            keyToInteger.put("C#", 6);
-            keyToInteger.put("D#", 7);
+            keyToInteger.put("Emaj7", 1);
+            keyToInteger.put("F#min7", 2);
+            keyToInteger.put("G#min7", 3);
+            keyToInteger.put("Amaj7", 4);
+            keyToInteger.put("B7", 5);
+            keyToInteger.put("C#min7", 6);
+            keyToInteger.put("D#min7b5", 7);
 
         }else if (userKey.equals("F")){
 

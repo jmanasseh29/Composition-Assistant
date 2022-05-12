@@ -139,11 +139,9 @@ public final class Main {
      // List<String> recommendations = CHANGE TO RECOMMENDATION FUNCTION[ MatchMaker.makeMatches(sunVal, moonVal, risingVal); ]
       List<String> recommendations = popRecommender.recommend(key, chord1, chord2, chord3, chord4);
 
-
-
       Gson GSON = new Gson();
-       Map<String, Object> recommendationsMap = ImmutableMap.of("matches", recommendations);
-       return GSON.toJson(recommendationsMap);
+      Map<String, Object> recommendationsMap = ImmutableMap.of("matches", recommendations);
+      return GSON.toJson(recommendationsMap);
       //return null; // placeholder
     }
   }

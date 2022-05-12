@@ -265,6 +265,12 @@ function changeColor(color: string) {
 }
 
 function postAndUpdate() {
+
+    const chordDropdown1 = document.querySelector('#dropdown1') as HTMLSelectElement
+    const chordDropdown2 = document.querySelector('#dropdown2') as HTMLSelectElement
+    const chordDropdown3 = document.querySelector('#dropdown3') as HTMLSelectElement
+    const chordDropdown4 = document.querySelector('#dropdown4') as HTMLSelectElement
+
     const postParameters: RecsRequestData = {
         genre: genre.value,
         key: key.value,
