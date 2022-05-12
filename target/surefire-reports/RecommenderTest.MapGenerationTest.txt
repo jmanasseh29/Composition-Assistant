@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: RecommenderTest.MapGenerationTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.038 s - in RecommenderTest.MapGenerationTest
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.049 s <<< FAILURE! - in RecommenderTest.MapGenerationTest
+RecommenderTest.MapGenerationTest.MapGen2  Time elapsed: 0.011 s  <<< ERROR!
+java.lang.NoSuchMethodError: 'java.util.HashMap edu.brown.cs.student.project1.MapGenerator.generateIntToKeyMap(java.lang.String[])'
+	at RecommenderTest.MapGenerationTest.MapGen2(MapGenerationTest.java:29)
+
+RecommenderTest.MapGenerationTest.MapGenerate  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoSuchMethodError: 'java.util.HashMap edu.brown.cs.student.project1.MapGenerator.generateIntToKeyMap(java.lang.String[])'
+	at RecommenderTest.MapGenerationTest.MapGenerate(MapGenerationTest.java:21)
+

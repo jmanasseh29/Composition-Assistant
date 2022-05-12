@@ -5,4 +5,4 @@ edu/brown/cs/student/project1/Recommender.class
 edu/brown/cs/student/project1/Main.class
 edu/brown/cs/student/project1/LoadedDatabase.class
 edu/brown/cs/student/project1/MapGenerator.class
-edu/brown/cs/student/project1/REPL.class
+edu/brown/cs/student/project1/Main$RecsHandler.class

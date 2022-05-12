@@ -5,6 +5,7 @@ import java.sql.Array;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -37,20 +38,22 @@ public class PopRecommender implements Recommender{
 
     /**
      * Recommender will return as many notes to fill a bar
-     * @param commandInputs inputted genre, key, and four chords
+     *
      */
 
     @Override
-    public void recommend(String[] commandInputs) {
+    public List<String> recommend(String key, String _firstChord, String _secondChord, String _thirdChord, String _fourthChord) {
+
+        List<String> _recommendations = new ArrayList<>();
 
         int _chordProg1SimilarityIndex = 0;
         int _chordProg2SimilarityIndex = 0;
         int _chordProg3SimilarityIndex = 0;
 
-        this._firstChord = commandInputs[3];
-        this._secondChord = commandInputs[4];
-        this._thirdChord = commandInputs[5];
-        this._fourthChord = commandInputs[6];
+        this._firstChord = _firstChord;
+        this._secondChord = _secondChord;
+        this._thirdChord = _thirdChord;
+        this._fourthChord = _fourthChord;
 
         this._generatedMap = new HashMap<>();
         this._intToString = new HashMap<>();
@@ -61,8 +64,8 @@ public class PopRecommender implements Recommender{
         this._mapGenerator = new MapGenerator();
 
         //REFACTOR
-        this._generatedMap = this._mapGenerator.generateKeyToIntMap(commandInputs);
-        this._intToString = this._mapGenerator.generateIntToKeyMap(commandInputs);
+        this._generatedMap = this._mapGenerator.generateKeyToIntMap(key, _firstChord, _secondChord, _thirdChord, _fourthChord);
+        this._intToString = this._mapGenerator.generateIntToKeyMap(key, _firstChord, _secondChord, _thirdChord, _fourthChord);
 
     _matchList = new ArrayList<>();
 
@@ -142,16 +145,17 @@ public class PopRecommender implements Recommender{
 
         if (_chordProg2SimilarityIndex > _chordProg1SimilarityIndex){
 
-            if (_chordProg2SimilarityIndex > _chordProg3SimilarityIndex){this.chordProgRecommender("second"); }
-            if (_chordProg2SimilarityIndex < _chordProg3SimilarityIndex ){ this.chordProgRecommender("third"); }
+            if (_chordProg2SimilarityIndex > _chordProg3SimilarityIndex){_recommendations = this.chordProgRecommender("second"); }
+            if (_chordProg2SimilarityIndex < _chordProg3SimilarityIndex ){ _recommendations= this.chordProgRecommender("third"); }
         }
 
         if (_chordProg2SimilarityIndex < _chordProg1SimilarityIndex){
 
-            if (_chordProg1SimilarityIndex > _chordProg3SimilarityIndex){ this.chordProgRecommender("first"); }
-            if (_chordProg1SimilarityIndex < _chordProg3SimilarityIndex ){this.chordProgRecommender("third"); }
+            if (_chordProg1SimilarityIndex > _chordProg3SimilarityIndex){_recommendations =  this.chordProgRecommender("first"); }
+            if (_chordProg1SimilarityIndex < _chordProg3SimilarityIndex ){ _recommendations = this.chordProgRecommender("third"); }
 
         }
+        return _recommendations;
     }
 
     /**
@@ -191,7 +195,7 @@ public class PopRecommender implements Recommender{
 
 
     //Integer[] _chordProgression1 = {1, 4, 5, 4};
-    public String chordProgRecommender(String whichOne){
+    public List<String> chordProgRecommender(String whichOne){
 
         Integer[] whichArray = null;
 
@@ -210,6 +214,7 @@ public class PopRecommender implements Recommender{
         String _noteRhythm;
         String _note;
         String _longOutputNoteString = "";
+        List<String> _recommendations = new ArrayList<>();
 
 
         _barCounter = 0;
@@ -222,15 +227,15 @@ public class PopRecommender implements Recommender{
 
                 _note = _intToString.get(whichArray[i]);
 
+                _longOutputNoteString = _note + "5" + "/" + _noteRhythm;
 
-               // System.out.println(_note + _noteRhythm);
+                _recommendations.add(_longOutputNoteString);
 
-                if (_longOutputNoteString.equals("")){
-                    _longOutputNoteString = _longOutputNoteString  + _note + "5" + "/" + _noteRhythm;
-
-                } else{
-                    _longOutputNoteString = _longOutputNoteString  +", " + _note + "5" + "/" + _noteRhythm;
-                }
+//                if (_longOutputNoteString.equals("")){
+//                    _longOutputNoteString = _longOutputNoteString  + _note + "5" + "/" + _noteRhythm;
+//                } else{
+//                    _longOutputNoteString = _longOutputNoteString  +", " + _note + "5" + "/" + _noteRhythm;
+//                }
 
                 //keeps track of whether enough/too many notes have been generated
                 if (_noteRhythm.equals("q")) {
@@ -246,9 +251,10 @@ public class PopRecommender implements Recommender{
             }
 
         }
-        System.out.println(_longOutputNoteString);
-        return _longOutputNoteString;
+
+        System.out.println(_recommendations);
+        //return _longOutputNoteString;
+        return _recommendations;
 
     }
-
 }

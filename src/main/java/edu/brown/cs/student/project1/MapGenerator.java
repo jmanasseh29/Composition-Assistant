@@ -22,26 +22,25 @@ public class MapGenerator {
     /**
      * This method takes in the User Inputs and fills in a hashmap assigning values to every note in a scale dependent on which
      * key the user desires.
-     * @param commandInputs
      * @return
      */
 
-    public HashMap<Integer, String> generateIntToKeyMap(String[] commandInputs){
+    public HashMap<Integer, String> generateIntToKeyMap(String key, String _firstChord, String _secondChord, String _thirdChord, String _fourthChord){
 
         HashMap<Integer, String> integerToKey = new HashMap<>();
         String userKey;
-        System.out.println(commandInputs[2]);
-        userKey = commandInputs[2].toUpperCase();
+        System.out.println(key);
+        userKey = key.toUpperCase();
 
         if (userKey.equals("C")){
 
-            integerToKey.put(1, "C");
-            integerToKey.put(2, "D");
-            integerToKey.put(3, "E");
-            integerToKey.put(4, "F");
-            integerToKey.put(5, "G");
-            integerToKey.put(6, "A");
-            integerToKey.put(7, "B");
+            integerToKey.put(1, "Cmaj7");
+            integerToKey.put(2, "Dmin7");
+            integerToKey.put(3, "Emin7");
+            integerToKey.put(4, "Fmaj7");
+            integerToKey.put(5, "G7");
+            integerToKey.put(6, "Amin7");
+            integerToKey.put(7, "Bmin7b5");
 
         } else if (userKey.equals("D")){
 
@@ -108,22 +107,22 @@ public class MapGenerator {
         return integerToKey;
     }
 
-    public HashMap<String, Integer> generateKeyToIntMap(String[] commandInputs){
+    public HashMap<String, Integer> generateKeyToIntMap(String key, String _firstChord, String _secondChord, String _thirdChord, String _fourthChord){
 
         HashMap<String, Integer> keyToInteger = new HashMap<>();
         String userKey;
 
-        userKey = commandInputs[2].toUpperCase();
+        userKey = key.toUpperCase();
 
         if (userKey.equals("C")){
 
-            keyToInteger.put("C", 1);
-            keyToInteger.put("D", 2);
-            keyToInteger.put("E", 3);
-            keyToInteger.put("F", 4);
-            keyToInteger.put("G", 5);
-            keyToInteger.put("A", 6);
-            keyToInteger.put("B", 7);
+            keyToInteger.put("Cmaj7", 1);
+            keyToInteger.put("Dmin7", 2);
+            keyToInteger.put("Emin7", 3);
+            keyToInteger.put("Fmaj7", 4);
+            keyToInteger.put("G7", 5);
+            keyToInteger.put("Amin7", 6);
+            keyToInteger.put("Bmin7b5", 7);
 
             System.out.println("map " + keyToInteger);
 
