@@ -152,10 +152,8 @@ public class JazzRecommender implements Recommender {
                     remainingRhythm = remainingRhythm - val;
                 }
             }
-            // fullMelody.add(barMelody.toString());
         }
 
-        // removes final comma
         return fullMelody;
     }
 
