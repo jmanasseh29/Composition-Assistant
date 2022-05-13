@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sprint-1</a> &gt; <a href="index.source.html" class="el_package">edu.brown.cs.student.project1</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package edu.brown.cs.student.project1;
+
+// look into using these imports for your REPL!
+
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
+import spark.Spark;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * The Main class of our project. This is where execution begins.
+ */
+public final class Main {
+
+  // use port 4567 by default when running server
+  private static final int DEFAULT_PORT = 4567;
+
+  /**
+   * The initial method called when execution begins.
+   *
+   * @param args An array of command line arguments
+   */
+  public static void main(String[] args) {
+<span class="nc" id="L27">    new Main(args).run();</span>
+<span class="nc" id="L28">  }</span>
+
+
+  private String[] args;
+
+<span class="nc" id="L33">  private Main(String[] args) {</span>
+<span class="nc" id="L34">    this.args = args;</span>
+<span class="nc" id="L35">  }</span>
+
+  private void run() {
+    // set up parsing of command line flags
+<span class="nc" id="L39">    OptionParser parser = new OptionParser();</span>
+
+    // &quot;./run --gui&quot; will start a web server
+<span class="nc" id="L42">    parser.accepts(&quot;gui&quot;);</span>
+
+    // use &quot;--port &lt;n&gt;&quot; to specify what port on which the server runs
+<span class="nc" id="L45">    parser.accepts(&quot;port&quot;).withRequiredArg().ofType(Integer.class)</span>
+<span class="nc" id="L46">        .defaultsTo(DEFAULT_PORT);</span>
+
+<span class="nc" id="L48">    OptionSet options = parser.parse(args);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">    if (options.has(&quot;gui&quot;)) {</span>
+
+<span class="nc" id="L51">      runSparkServer((int) options.valueOf(&quot;port&quot;));</span>
+
+    }
+
+<span class="nc" id="L55">    REPL repl = new REPL();</span>
+    try {
+      //added
+<span class="nc" id="L58">      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L59">      repl.REPLFunctionality(bufferedReader);</span>
+<span class="nc" id="L60">    } catch (IOException e) {</span>
+<span class="nc" id="L61">      System.out.println(&quot;ERROR: no more entries&quot;); //testing for io exception</span>
+
+<span class="nc" id="L63">    }</span>
+<span class="nc" id="L64">  }</span>
+
+
+  private void runSparkServer(int port) {
+    // set port to run the server on
+<span class="nc" id="L69">    Spark.port(port);</span>
+
+    // specify location of static resources (HTML, CSS, JS, images, etc.)
+<span class="nc" id="L72">    Spark.externalStaticFileLocation(&quot;src/main/resources/static&quot;);</span>
+
+<span class="nc" id="L74">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

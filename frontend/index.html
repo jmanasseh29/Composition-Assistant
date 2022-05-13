@@ -2,24 +2,24 @@
 <html lang="">
 <head>
     <meta charset="utf-8">
-    <title>Table</title>
+    <title>Composition Assistant</title>
     <style>
-        .headerWrapper {
+
+        .wrapper {
             width: 100%;
-            margin-top: 50px;
             text-align: center;
+        }
+
+        .headerWrapper {
+            margin-top: 50px;
         }
 
         .chordWrapper {
-            width: 100%;
-            margin-top: 40px;
-            text-align: center;
+            margin-top: 20px;
         }
 
         .genreKeyWrapper {
-            width: 100%;
-            margin-top: 20px;
-            text-align: center;
+            margin-top: 40px;
         }
 
         .logoBG {
@@ -90,7 +90,8 @@
 
         .genreKeyDropDownStyle {
             background: white;
-            padding: 10px 5px 10px 6px;
+            padding: 10px 15px 10px 15px;
+
             border-radius: 25px;
             text-align: center;
             font-family: Gogh,serif;
@@ -177,6 +178,7 @@
 <button id="blueButton"></button>
 <button id="purpleButton"></button>
 
+<div class="wrapper">
 <div class="headerWrapper">
     <div id="logo">
         <span class="logoBG">
@@ -190,57 +192,86 @@
         </div>
     </div>
 
-    <div class="subHeaderStyle">Enter at least two chords and a genre to receive composition recommendations</div>
+    <div class="subHeaderStyle">Enter a genre, key, and four chords to receive composition recommendations</div>
 </div>
+
+<div class="genreKeyWrapper">
+
+    <label class="genreKeyDropDownLabel" for="genre">Genre</label>
+    <select class="genreKeyDropDownStyle" id="genre" name="genre">
+        <option value="Pop">Pop</option>
+        <option value="Jazz">Jazz</option>
+    </select>
+
+    <label class="genreKeyDropDownLabel" for="key">Key</label>
+    <select class="genreKeyDropDownStyle" id="key" name="dropdown">
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="G">G</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+    </select>
+</div>
+
+<br>
 
 <div id="chords" class="chordWrapper">
 
     <!-- Create a dropdown here to choose between tables -->
     <label class="chordDropDownLabel" for="dropdown1">Chord 1</label>
     <select class="chordDropDownStyle" id="dropdown1" name="dropdown"> <!-- MAIN COLOR -->
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
+        <option value="Cmaj7">Cmaj7</option>
+        <option value="Dmin7">Dmin7</option>
+        <option value="Emin7">Emin7</option>
+        <option value="Fmaj7">Fmaj7</option>
+        <option value="G7">G7</option>
+        <option value="Amin7">Amin7</option>
+        <option value="Bmin7b5">Bmin7b5</option>
     </select>
 
     <label class="chordDropDownLabel" for="dropdown2">Chord 2</label>
     <select class="chordDropDownStyle" id="dropdown2" name="dropdown"> <!-- MAIN COLOR -->
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
+        <option value="Cmaj7">Cmaj7</option>
+        <option value="Dmin7">Dmin7</option>
+        <option value="Emin7">Emin7</option>
+        <option value="Fmaj7">Fmaj7</option>
+        <option value="G7">G7</option>
+        <option value="Amin7">Amin7</option>
+        <option value="Bmin7b5">Bmin7b5</option>
     </select>
 
     <label class="chordDropDownLabel" for="dropdown3">Chord 3</label>
     <select class="chordDropDownStyle" id="dropdown3" name="dropdown"> <!-- MAIN COLOR -->
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
+        <option value="Cmaj7">Cmaj7</option>
+        <option value="Dmin7">Dmin7</option>
+        <option value="Emin7">Emin7</option>
+        <option value="Fmaj7">Fmaj7</option>
+        <option value="G7">G7</option>
+        <option value="Amin7">Amin7</option>
+        <option value="Bmin7b5">Bmin7b5</option>
     </select>
 
     <label class="chordDropDownLabel" for="dropdown4">Chord 4</label>
     <select class="chordDropDownStyle" id="dropdown4" name="dropdown"> <!-- MAIN COLOR -->
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
+        <option value="Cmaj7">Cmaj7</option>
+        <option value="Dmin7">Dmin7</option>
+        <option value="Emin7">Emin7</option>
+        <option value="Fmaj7">Fmaj7</option>
+        <option value="G7">G7</option>
+        <option value="Amin7">Amin7</option>
+        <option value="Bmin7b5">Bmin7b5</option>
     </select>
 
 </div>
 
 <br>
 
-<div class="genreKeyWrapper">
+<div id ="enter">
+    <button class="buttonStyle" id="enterButton">Enter</button>
+</div>
 
-    <label class="genreKeyDropDownLabel" for="genre">Genre</label>
-    <select class="genreKeyDropDownStyle" id="genre" name="genre">
-        <option value="Genre 1">Genre 1</option>
-        <option value="Genre 2">Genre 2</option>
-    </select>
-
-    <label class="genreKeyDropDownLabel" for="key">Key</label>
-    <select class="genreKeyDropDownStyle" id="key" name="dropdown">
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
-    </select>
-
-    <div id ="enter">
-        <button class="buttonStyle" id="enterButton">Enter</button>
-    </div>
 </div>
 
 </body>

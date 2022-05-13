@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PopRecommender.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sprint-1</a> &gt; <a href="index.source.html" class="el_package">edu.brown.cs.student.project1</a> &gt; <span class="el_source">PopRecommender.java</span></div><h1>PopRecommender.java</h1><pre class="source lang-java linenums">package edu.brown.cs.student.project1;
+
+import org.checkerframework.checker.units.qual.A;
+import java.sql.Array;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+/**
+ *
+ */
+
+<span class="nc" id="L13">public class PopRecommender implements Recommender{</span>
+
+   MapGenerator _mapGenerator;
+   HashMap&lt;String, Integer&gt; _generatedMap;
+   HashMap&lt;Integer, String&gt; _intToString;
+
+    //chord progressions that will be used as a baseline for the recommendations
+<span class="nc" id="L20">    Integer[] _chordProgression1 = {1, 4, 5, 4};</span>
+<span class="nc" id="L21">    Integer[] _chordProgression2 = {1, 5, 6, 4};</span>
+<span class="nc" id="L22">    Integer[] _chordProgression3 = {1, 6, 4, 5};</span>
+
+    //idea: check for entire;y equivalent chord inputs and only run more random algorithm if there is not complete equivalence
+
+    String _firstChord;
+    String _secondChord;
+    String _thirdChord;
+    String _fourthChord;
+
+    ArrayList&lt;Integer&gt; _matchList;
+
+    int _firstChordInt;
+    int _secondChordInt;
+    int _thirdChordInt;
+    int _fourthChordInt;
+
+    /**
+     * Recommender will return as many notes to fill a bar
+     * @param commandInputs inputted genre, key, and four chords
+     */
+
+    @Override
+    public void recommend(String[] commandInputs) {
+
+<span class="nc" id="L46">        int _chordProg1SimilarityIndex = 0;</span>
+<span class="nc" id="L47">        int _chordProg2SimilarityIndex = 0;</span>
+<span class="nc" id="L48">        int _chordProg3SimilarityIndex = 0;</span>
+
+<span class="nc" id="L50">        this._firstChord = commandInputs[3];</span>
+<span class="nc" id="L51">        this._secondChord = commandInputs[4];</span>
+<span class="nc" id="L52">        this._thirdChord = commandInputs[5];</span>
+<span class="nc" id="L53">        this._fourthChord = commandInputs[6];</span>
+
+<span class="nc" id="L55">        this._generatedMap = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L56">        this._intToString = new HashMap&lt;&gt;();</span>
+
+    //System.out.println(&quot;genre: &quot; +commandInputs[1] + &quot;  key: &quot;+ commandInputs[2] + &quot;  chord 1: &quot;+ commandInputs[3] + &quot;  chord 2: &quot;+  commandInputs[4] + &quot;  chord 3: &quot;+  commandInputs[5] + &quot;  chord 4: &quot;+  commandInputs[6]);
+
+
+<span class="nc" id="L61">        this._mapGenerator = new MapGenerator();</span>
+
+        //REFACTOR
+<span class="nc" id="L64">        this._generatedMap = this._mapGenerator.generateKeyToIntMap(commandInputs);</span>
+<span class="nc" id="L65">        this._intToString = this._mapGenerator.generateIntToKeyMap(commandInputs);</span>
+
+<span class="nc" id="L67">    _matchList = new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L69">    this._firstChordInt = this._generatedMap.get(this._firstChord);</span>
+<span class="nc" id="L70">    this._secondChordInt = this._generatedMap.get(this._secondChord);</span>
+<span class="nc" id="L71">    this._thirdChordInt = this._generatedMap.get(this._thirdChord);</span>
+<span class="nc" id="L72">    this._fourthChordInt = this._generatedMap.get(this._fourthChord);</span>
+
+
+<span class="nc bnc" id="L75" title="All 8 branches missed.">    if (this._firstChordInt == 1 || this._firstChordInt == 4 || this._firstChordInt == 5 || this._firstChordInt == 6){</span>
+<span class="nc" id="L76">        this._matchList.add(this._firstChordInt);</span>
+        }
+
+<span class="nc bnc" id="L79" title="All 8 branches missed.">    if (this._secondChordInt == 1 || this._secondChordInt == 4 || this._secondChordInt == 5 || this._secondChordInt == 6){</span>
+<span class="nc" id="L80">        this._matchList.add(this._secondChordInt);</span>
+        }
+
+<span class="nc bnc" id="L83" title="All 8 branches missed.">    if (this._thirdChordInt == 1 || this._thirdChordInt == 4 || this._thirdChordInt == 5 || this._thirdChordInt == 6){</span>
+<span class="nc" id="L84">        this._matchList.add(this._thirdChordInt);</span>
+        }
+
+<span class="nc bnc" id="L87" title="All 8 branches missed.">    if (this._fourthChordInt == 1 || this._fourthChordInt == 4 || this._fourthChordInt == 5 || this._fourthChordInt == 6){</span>
+<span class="nc" id="L88">        this._matchList.add(this._fourthChordInt);</span>
+        }
+
+    //System.out.println(&quot;match list: &quot; + this._matchList);
+
+
+<span class="nc bnc" id="L94" title="All 2 branches missed.">        for (int i = 0; i &lt; this._chordProgression1.length ; i++){</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">            for (int j = 0; j &lt; this._matchList.size(); j++){</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">            if (this._matchList.get(j).equals(this._chordProgression1[i])){</span>
+<span class="nc" id="L97">                _chordProg1SimilarityIndex = _chordProg1SimilarityIndex + 1; //increment similarity checker by 1 for ever common chord between the</span>
+                                                                             // set chord progressions and the user's desired chords.
+                }
+            }
+        }
+
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        for (int i = 0; i &lt; this._chordProgression2.length ; i++){</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">            for (int j = 0; j &lt; this._matchList.size(); j++){</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">                if (this._matchList.get(j).equals(this._chordProgression2[i])){</span>
+<span class="nc" id="L106">                    _chordProg2SimilarityIndex = _chordProg2SimilarityIndex + 1; //increment similarity checker by 1 for ever common chord between the</span>
+                    // set chord progressions and the user's desired chords.
+                }
+            }
+        }
+
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        for (int i = 0; i &lt; this._chordProgression3.length ; i++){</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">            for (int j = 0; j &lt; this._matchList.size(); j++){</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">                if (this._matchList.get(j).equals(this._chordProgression3[i])){</span>
+<span class="nc" id="L115">                    _chordProg3SimilarityIndex = _chordProg3SimilarityIndex + 1; //increment similarity checker by 1 for ever common chord between the</span>
+                    // set chord progressions and the user's desired chords.
+                }
+            }
+        }
+
+      //compare three similarity indices so that we can choose which one to base predictions from.  If multiple
+      // chord progressions have equal similarity indices are then added into a list and the tie is broken using randomization
+
+      //while loop to ensure incrementing doesn't result in repeated equivalence (for example in case that similarity indices are 2, 2, 3)
+      //this.chordSimilarityIndexRandomChoice(this._chordProg1SimilarityIndex, this._chordProg2SimilarityIndex, this._chordProg3SimilarityIndex);
+
+
+<span class="nc bnc" id="L128" title="All 2 branches missed.">        while (_chordProg1SimilarityIndex == _chordProg3SimilarityIndex){</span>
+<span class="nc" id="L129">            _chordProg3SimilarityIndex = _chordProg3SimilarityIndex + (int)(Math.random()*7);</span>
+
+        }
+
+<span class="nc bnc" id="L133" title="All 4 branches missed.">        while (_chordProg1SimilarityIndex == _chordProg2SimilarityIndex || _chordProg2SimilarityIndex == _chordProg3SimilarityIndex){</span>
+<span class="nc" id="L134">            _chordProg1SimilarityIndex = _chordProg1SimilarityIndex + (int)(Math.random()*7) ;</span>
+<span class="nc" id="L135">            _chordProg2SimilarityIndex = _chordProg2SimilarityIndex + (int)(Math.random()*7);</span>
+
+        }
+
+        //System.out.println(&quot; chord 1 similar: &quot; + _chordProg1SimilarityIndex);
+        //System.out.println(&quot; chord 2 similar: &quot; + _chordProg2SimilarityIndex);
+        //System.out.println(&quot; chord 3 similar: &quot; + _chordProg3SimilarityIndex);
+
+
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        if (_chordProg2SimilarityIndex &gt; _chordProg1SimilarityIndex){</span>
+
+<span class="nc bnc" id="L146" title="All 2 branches missed.">            if (_chordProg2SimilarityIndex &gt; _chordProg3SimilarityIndex){this.chordProgRecommender(&quot;second&quot;); }</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">            if (_chordProg2SimilarityIndex &lt; _chordProg3SimilarityIndex ){ this.chordProgRecommender(&quot;third&quot;); }</span>
+        }
+
+<span class="nc bnc" id="L150" title="All 2 branches missed.">        if (_chordProg2SimilarityIndex &lt; _chordProg1SimilarityIndex){</span>
+
+<span class="nc bnc" id="L152" title="All 2 branches missed.">            if (_chordProg1SimilarityIndex &gt; _chordProg3SimilarityIndex){ this.chordProgRecommender(&quot;first&quot;); }</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">            if (_chordProg1SimilarityIndex &lt; _chordProg3SimilarityIndex ){this.chordProgRecommender(&quot;third&quot;); }</span>
+
+        }
+<span class="nc" id="L156">    }</span>
+
+    /**
+     *
+     * @return
+     */
+
+    public String generateRhythm() {
+
+        String rhythm;
+
+<span class="nc" id="L167">        int rand_int = (int) (Math.random() * 3);</span>
+
+<span class="nc bnc" id="L169" title="All 4 branches missed.">        switch (rand_int) {</span>
+
+            //eighth note
+            case 0 :
+<span class="nc" id="L173">                rhythm = &quot;8&quot; ;</span>
+<span class="nc" id="L174">                break;</span>
+
+            //sixteenth note
+            case 1 :
+<span class="nc" id="L178">                rhythm = &quot;h&quot; ;</span>
+<span class="nc" id="L179">                break;</span>
+
+            //whole note
+            case 2 :
+<span class="nc" id="L183">                rhythm = &quot;q&quot;;</span>
+<span class="nc" id="L184">                break;</span>
+
+            default:
+<span class="nc" id="L187">                rhythm = &quot;w&quot;;</span>
+                break;
+        }
+<span class="nc" id="L190">        return rhythm;</span>
+    }
+
+
+    //Integer[] _chordProgression1 = {1, 4, 5, 4};
+    public String chordProgRecommender(String whichOne){
+
+<span class="nc" id="L197">        Integer[] whichArray = null;</span>
+
+<span class="nc bnc" id="L199" title="All 2 branches missed.">        if (whichOne.equals(&quot;first&quot;)){</span>
+<span class="nc" id="L200">            whichArray = this._chordProgression1;</span>
+<span class="nc" id="L201">            System.out.println(&quot;Recommending based on Chord Progression 1&quot;);</span>
+<span class="nc bnc" id="L202" title="All 2 branches missed.">        }else if (whichOne.equals(&quot;second&quot;)){</span>
+<span class="nc" id="L203">            whichArray = this._chordProgression2;</span>
+<span class="nc" id="L204">            System.out.println(&quot;Recommending based on Chord Progression 2&quot;);</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">        } else if(whichOne.equals(&quot;third&quot;)){</span>
+<span class="nc" id="L206">            whichArray = this._chordProgression3;</span>
+<span class="nc" id="L207">            System.out.println(&quot;Recommending based on Chord Progression 3&quot;);</span>
+        }
+
+        double _barCounter;
+        String _noteRhythm;
+        String _note;
+<span class="nc" id="L213">        String _longOutputNoteString = &quot;&quot;;</span>
+
+
+<span class="nc" id="L216">        _barCounter = 0;</span>
+
+<span class="nc bnc" id="L218" title="All 2 branches missed.">        while (_barCounter &lt; 16){</span>
+
+<span class="nc bnc" id="L220" title="All 2 branches missed.">            for (int i = 0; i &lt; whichArray.length ; i ++){</span>
+
+<span class="nc" id="L222">                _noteRhythm = generateRhythm();</span>
+
+<span class="nc" id="L224">                _note = _intToString.get(whichArray[i]);</span>
+
+
+               // System.out.println(_note + _noteRhythm);
+
+<span class="nc bnc" id="L229" title="All 2 branches missed.">                if (_longOutputNoteString.equals(&quot;&quot;)){</span>
+<span class="nc" id="L230">                    _longOutputNoteString = _longOutputNoteString  + _note + &quot;5&quot; + &quot;/&quot; + _noteRhythm;</span>
+
+                } else{
+<span class="nc" id="L233">                    _longOutputNoteString = _longOutputNoteString  +&quot;, &quot; + _note + &quot;5&quot; + &quot;/&quot; + _noteRhythm;</span>
+                }
+
+                //keeps track of whether enough/too many notes have been generated
+<span class="nc bnc" id="L237" title="All 2 branches missed.">                if (_noteRhythm.equals(&quot;q&quot;)) {</span>
+<span class="nc" id="L238">                    _barCounter = _barCounter + 1;</span>
+<span class="nc bnc" id="L239" title="All 2 branches missed.">                } else if(_noteRhythm.equals(&quot;8&quot;)){</span>
+<span class="nc" id="L240">                    _barCounter = _barCounter + 0.5;</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">                } else if(_noteRhythm.equals(&quot;h&quot;)){</span>
+<span class="nc" id="L242">                    _barCounter = _barCounter + 2;</span>
+<span class="nc bnc" id="L243" title="All 2 branches missed.">                } else if (_noteRhythm.equals(&quot;w&quot;)) {</span>
+<span class="nc" id="L244">                    _barCounter = _barCounter + 4;</span>
+                }
+
+            }
+
+        }
+<span class="nc" id="L250">        System.out.println(_longOutputNoteString);</span>
+<span class="nc" id="L251">        return _longOutputNoteString;</span>
+
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

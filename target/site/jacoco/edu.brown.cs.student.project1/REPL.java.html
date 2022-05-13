@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>REPL.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sprint-1</a> &gt; <a href="index.source.html" class="el_package">edu.brown.cs.student.project1</a> &gt; <span class="el_source">REPL.java</span></div><h1>REPL.java</h1><pre class="source lang-java linenums">package edu.brown.cs.student.project1;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+
+public final class REPL {
+
+  private HashMap&lt;String, Recommender&gt; commandDatabase;
+  String[] tokenList; //tokenized array list to be passed in with command and terminal entries
+  static String[] testtokenList; //only to be passed thru for testing
+
+<span class="nc" id="L14">  public REPL() {</span>
+<span class="nc" id="L15">    this.commandDatabase = new HashMap&lt;String, Recommender&gt;();</span>
+<span class="nc" id="L16">    this.buildCommandDatabase();</span>
+<span class="nc" id="L17">  }</span>
+
+  /**
+   * This method creates a key value store of commands mapping from inputted commands (parsed from the terminal
+   * by the repl to an instance of a command class which can then perform the appropriate run method.
+   */
+
+  public void buildCommandDatabase() {
+
+    //add commands here
+<span class="nc" id="L27">    this.commandDatabase.put(&quot;pop_recommendation&quot;, new PopRecommender());</span>
+
+<span class="nc" id="L29">  }</span>
+
+  /**
+   * The repl simply parses terminal input and tokenized this input into an array of strings which can then
+   * be passed into other methods and utilized
+   * @param bufferedReader
+   * @throws IOException
+   */
+
+  public void REPLFunctionality(BufferedReader bufferedReader) throws IOException { //error checking for .readLine method
+
+<span class="nc" id="L40">    String line = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L42" title="All 2 branches missed.">    while ((line = bufferedReader.readLine()) != null) {</span>
+
+<span class="nc" id="L44">      tokenList = line.split(&quot;\\s+(?=((\\\\[\\\\\&quot;]|[^\\\\\&quot;])*\&quot;(\\\\[\\\\\&quot;]|[^\\\\\&quot;])*\&quot;)*(\\\\[\\\\\&quot;]|[^\\\\\&quot;])*$)&quot;); //site //&quot;\\s+(?=((\\\\[\\\\\&quot;]|[^\\\\\&quot;])*\&quot;(\\\\[\\\\\&quot;]|[^\\\\\&quot;])*\&quot;)*(\\\\[\\\\\&quot;]|[^\\\\\&quot;])*$)&quot;</span>
+<span class="nc" id="L45">      testtokenList = line.split(&quot;\\s+(?=((\\\\[\\\\\&quot;]|[^\\\\\&quot;])*\&quot;(\\\\[\\\\\&quot;]|[^\\\\\&quot;])*\&quot;)*(\\\\[\\\\\&quot;]|[^\\\\\&quot;])*$)&quot;);</span>
+
+<span class="nc bnc" id="L47" title="All 2 branches missed.">      if (this.commandDatabase.containsKey(tokenList[0])) {</span>
+<span class="nc" id="L48">        this.commandDatabase.get(tokenList[0]).recommend(tokenList);</span>
+      } else {
+<span class="nc" id="L50">        System.out.println(&quot;ERROR:&quot;);</span>
+      }
+
+    }
+
+<span class="nc" id="L55">  }</span>
+
+  /**
+   * this method is only used for testing to verify that the REPL is correctly parsing
+   * commmand input and tokenizing
+   */
+
+  public String[] returnTokenList(){
+<span class="nc" id="L63">    return testtokenList;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
