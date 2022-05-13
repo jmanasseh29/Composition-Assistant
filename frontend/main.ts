@@ -270,6 +270,8 @@ function postAndUpdate() {
     const chordDropdown2 = document.querySelector('#dropdown2') as HTMLSelectElement
     const chordDropdown3 = document.querySelector('#dropdown3') as HTMLSelectElement
     const chordDropdown4 = document.querySelector('#dropdown4') as HTMLSelectElement
+    const genre = document.querySelector('#genre') as HTMLSelectElement
+    const key = document.querySelector('#key') as HTMLSelectElement
 
     const postParameters: RecsRequestData = {
         genre: genre.value,

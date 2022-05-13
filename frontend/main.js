@@ -245,6 +245,8 @@ function postAndUpdate() {
     const chordDropdown2 = document.querySelector('#dropdown2');
     const chordDropdown3 = document.querySelector('#dropdown3');
     const chordDropdown4 = document.querySelector('#dropdown4');
+    const genre = document.querySelector('#genre');
+    const key = document.querySelector('#key');
     const postParameters = {
         genre: genre.value,
         key: key.value,

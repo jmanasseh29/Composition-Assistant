@@ -42,9 +42,9 @@ public class PopRecommender implements Recommender{
      */
 
     @Override
-    public List<String> recommend(String key, String _firstChord, String _secondChord, String _thirdChord, String _fourthChord) {
+    public ArrayList<String> recommend(String genre, String key, String _firstChord, String _secondChord, String _thirdChord, String _fourthChord) {
 
-        List<String> _recommendations = new ArrayList<>();
+        ArrayList<String> _recommendations = new ArrayList<>();
 
         int _chordProg1SimilarityIndex = 0;
         int _chordProg2SimilarityIndex = 0;
@@ -69,7 +69,7 @@ public class PopRecommender implements Recommender{
 
     _matchList = new ArrayList<>();
 
-    System.out.println("first chord" + this._firstChord);
+    System.out.println("Pop Recommendations!");
 
     this._firstChordInt = this._generatedMap.get(this._firstChord);
 
@@ -129,16 +129,13 @@ public class PopRecommender implements Recommender{
       //while loop to ensure incrementing doesn't result in repeated equivalence (for example in case that similarity indices are 2, 2, 3)
       //this.chordSimilarityIndexRandomChoice(this._chordProg1SimilarityIndex, this._chordProg2SimilarityIndex, this._chordProg3SimilarityIndex);
 
-
         while (_chordProg1SimilarityIndex == _chordProg3SimilarityIndex){
             _chordProg3SimilarityIndex = _chordProg3SimilarityIndex + (int)(Math.random()*7);
-
         }
 
         while (_chordProg1SimilarityIndex == _chordProg2SimilarityIndex || _chordProg2SimilarityIndex == _chordProg3SimilarityIndex){
             _chordProg1SimilarityIndex = _chordProg1SimilarityIndex + (int)(Math.random()*7) ;
             _chordProg2SimilarityIndex = _chordProg2SimilarityIndex + (int)(Math.random()*7);
-
         }
 
         //System.out.println(" chord 1 similar: " + _chordProg1SimilarityIndex);
@@ -158,7 +155,11 @@ public class PopRecommender implements Recommender{
             if (_chordProg1SimilarityIndex < _chordProg3SimilarityIndex ){ _recommendations = this.chordProgRecommender("third"); }
 
         }
+
+
+
         return _recommendations;
+
     }
 
     /**
@@ -198,7 +199,7 @@ public class PopRecommender implements Recommender{
 
 
     //Integer[] _chordProgression1 = {1, 4, 5, 4};
-    public List<String> chordProgRecommender(String whichOne){
+    public ArrayList<String> chordProgRecommender(String whichOne){
 
         Integer[] whichArray = null;
 
@@ -217,8 +218,7 @@ public class PopRecommender implements Recommender{
         String _noteRhythm;
         String _note;
         String _longOutputNoteString = "";
-        List<String> _recommendations = new ArrayList<>();
-
+        ArrayList<String> _recommendations = new ArrayList<>();
 
         _barCounter = 0;
 

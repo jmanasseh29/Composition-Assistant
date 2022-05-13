@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
+import org.checkerframework.checker.units.qual.A;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
@@ -104,6 +105,7 @@ public final class Main {
 
   //why static?
   static PopRecommender popRecommender = new PopRecommender();
+  static JazzRecommender jazzRecommender = new JazzRecommender();
 
   private static class RecsHandler implements Route {
 
@@ -137,7 +139,18 @@ public final class Main {
 
       //example
      // List<String> recommendations = CHANGE TO RECOMMENDATION FUNCTION[ MatchMaker.makeMatches(sunVal, moonVal, risingVal); ]
-      List<String> recommendations = popRecommender.recommend(key, chord1, chord2, chord3, chord4);
+
+
+      List<String> recommendations = new ArrayList<>();
+
+
+      if (genre.equals("Pop")){
+      recommendations = popRecommender.recommend(genre, key, chord1, chord2, chord3, chord4);
+
+      } else if (genre.equals("Jazz")){
+      recommendations = jazzRecommender.recommend(genre, key, chord1, chord2, chord3, chord4);
+      }
+
 
       Gson GSON = new Gson();
       Map<String, Object> recommendationsMap = ImmutableMap.of("matches", recommendations);
