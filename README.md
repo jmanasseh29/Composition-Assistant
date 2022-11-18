@@ -1,4 +1,2 @@
-# README
-
-## Project 2
+# Composition Assistant
 
